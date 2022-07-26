@@ -1,0 +1,222 @@
+<!--affichage informations utilisateur-->
+<nav>
+  <ul>
+    <li>
+      <a href="index.php?route=userAccount" title="Mon espace">retour</a>
+    </li>
+  </ul>
+</nav>
+
+<h1>Gestion de mes informations</h1>
+<section>
+  <h2>Informations vérifiées</h2>
+  <ul>
+    <li>
+      Nom:
+      <?= htmlspecialchars( $userInfos['lastname'] ) ?>
+    </li>
+    <li>
+      Prénom:
+      <?= htmlspecialchars( $userInfos['firstname'] ) ?>
+    </li>
+    <li>
+      Adresse mail:
+      <?= htmlspecialchars( $userInfos['mail'] ) ?>
+    </li>
+    <li>
+      Inscrit le:
+      <?= htmlspecialchars( $signUpDate ) ?>
+    </li>
+  </ul>
+</section>
+<!--modification informations utilisateurs-->
+<section>
+  <h2>Modifier mes informations</h2>
+  <form action="index.php?route=submitEditInformationsUser" method="POST">
+    <div>
+      <label for="lastname">Nom</label>
+      <input
+        type="text"
+        name="lastname"
+        id="lastname"
+        class="prevent_enter"
+        value="<?= htmlspecialchars( $userInfos['lastname'] ) ?>"
+      />
+      <?php if( isset($_SESSION['formEditInformationsUserErrors']['lastname']) ) : ?>
+      <?php foreach( $_SESSION['formEditInformationsUserErrors']['lastname'] as $errorMessage ) : ?>
+      <span class="error_message">
+        <?= $errorMessage ?>
+      </span>
+      <?php endforeach; ?>
+      <?php endif; ?>
+    </div>
+
+    <div>
+      <label for="firstname">Prénom</label>
+      <input
+        type="text"
+        name="firstname"
+        id="firstname"
+        class="prevent_enter"
+        value="<?= htmlspecialchars( $userInfos['firstname'] ) ?>"
+      />
+      <?php if( isset($_SESSION['formEditInformationsUserErrors']['firstname']) ) : ?>
+      <?php foreach( $_SESSION['formEditInformationsUserErrors']['firstname'] as $errorMessage ) : ?>
+      <span class="error_message">
+        <?= $errorMessage ?>
+      </span>
+      <?php endforeach; ?>
+      <?php endif; ?>
+    </div>
+
+    <div>
+      <label for="mail">Adresse mail</label>
+      <input
+        type="mail"
+        name="mail"
+        id="mail"
+        class="prevent_enter"
+        value="<?= htmlspecialchars( $userInfos['mail'] ) ?>"
+      />
+      <?php if( isset($_SESSION['formEditInformationsUserErrors']['mailError']) ) : ?>
+      <?php foreach( $_SESSION['formEditInformationsUserErrors']['mailError'] as $errorMessage ) : ?>
+      <span class="error_message">
+        <?= $errorMessage ?>
+      </span>
+      <?php endforeach; ?>
+      <?php endif; ?>
+    </div>
+
+    <div>
+      <label for="password">Mot de passe<sup>*</sup></label>
+      <input
+        type="password"
+        name="password"
+        class="prevent_enter"
+        autocomplete="off"
+        value=""
+        required
+      />
+      <?php if( isset( $_SESSION['formEditInformationsUserErrors']['currentPasswordError'] ) ) : ?>
+      <span class="error_message">
+        <?= $_SESSION['formEditInformationsUserErrors']['currentPasswordError'] ?>
+      </span>
+      <?php endif; ?>
+    </div>
+
+    <button type="submit" name="validate_edit">Appliquer</button>
+  </form>
+</section>
+<!--modification du mot de passe-->
+<section>
+  <h2>Modifier mon mot de passe</h2>
+  <form action="index.php?route=submitEditPasswordUser" method="POST">
+    <div>
+      <label for="password">Mot de passe<sup>*</sup></label>
+      <input
+        type="password"
+        name="password"
+        class="prevent_enter"
+        autocomplete="off"
+        value=""
+        required
+      />
+      <?php if( isset( $_SESSION['formEditPasswordUserErrors']['currentPasswordError'] ) ) : ?>
+      <span class="error_message">
+        <?= $_SESSION['formEditPasswordUserErrors']['currentPasswordError'] ?>
+      </span>
+      <?php endif; ?>
+    </div>
+
+    <div>
+      <label for="new_password1">Nouveau mot de passe</label>
+      <input
+        type="password"
+        name="new_password1"
+        id="new_password1"
+        class="prevent_enter"
+        autocomplete="off"
+        value=""
+      />
+      <?php if( isset( $_SESSION['formEditPasswordUserErrors']['newPasswordError'] ) ) : ?>
+      <span class="error_message">
+        <?= $_SESSION['formEditPasswordUserErrors']['newPasswordError'] ?>
+        </span>
+      <?php endif; ?>
+    </div>
+
+    <div>
+      <label for="new_password2">Confirmez le nouveau mot de passe</label>
+      <input
+        type="password"
+        name="new_password2"
+        id="new_password2"
+        class="prevent_enter"
+        autocomplete="off"
+        value=""
+      />
+      <?php if( isset( $_SESSION['formEditPasswordUserErrors']['newPasswordError'] ) ) : ?>
+      <span class="error_message">
+        <?= $_SESSION['formEditPasswordUserErrors']['newPasswordError'] ?>
+      </span>
+      <?php endif; ?>
+    </div>
+
+    <button type="submit" name="validate_delete">Appliquer</button>
+  </form>
+</section>
+<!--suppression compte utilisateur-->
+<section>
+  <h2>Supprimer mon compte</h2>
+
+  <form action="index.php?route=submitDeleteHisAccount" method="POST">
+    <div>
+      <label for="password1">Mot de passe<sup>*</sup></label>
+      <input
+        type="password"
+        name="password1"
+        id="password1"
+        class="prevent_enter"
+        required
+      />
+      <?php if( isset($_SESSION['formDeleteHisAccountErrors']['currentPasswordError']) ) : ?>
+      <?php foreach( $_SESSION['formDeleteHisAccountErrors']['currentPasswordError'] as $errorMessage ) : ?>
+      <span class="error_message">
+        <?= $errorMessage ?>
+      </span>
+      <?php endforeach; ?>
+      <?php endif; ?>
+    </div>
+
+    <div>
+      <label for="password2">Confirmez le mot de passe<sup>*</sup></label>
+      <input
+        type="password"
+        name="password2"
+        id="password2"
+        class="prevent_enter"
+        required
+      />
+      <?php if( isset($_SESSION['formDeleteHisAccountErrors']['currentPasswordError']) ) : ?>
+      <?php foreach( $_SESSION['formDeleteHisAccountErrors']['currentPasswordError'] as $errorMessage ) : ?>
+      <span class="error_message">
+        <?= $errorMessage ?>
+      </span>
+      <?php endforeach; ?>
+      <?php endif; ?>
+    </div>
+
+    <div>
+      <label for="confirm">Je confirme vouloir supprimer mon compte</label>
+      <input type="checkbox" id="confirm" name="confirm" required />
+      
+      <?php if( isset( $_SESSION['formDeleteHisAccountErrors']['confirmError'] ) ) : ?>
+      <span class="error_message">
+        <?= $_SESSION['formDeleteHisAccountErrors']['confirmError'] ?>
+      </span>
+      <?php endif; ?>
+    </div>
+
+    <button type="submit" name="validate_delete">Supprimer</button>
+  </form>
+</section>

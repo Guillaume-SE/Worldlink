@@ -1,0 +1,68 @@
+<!--récapitulatif réservations confirmée-->
+<section class="purchasedBooking__descr">
+    <h1 class="purchasedBooking__descr__title">Réservation confirmée !</h1>
+    <p class="purchasedBooking__descr__text">Merci pour votre achat ! 
+      Retrouvez ci-dessous le récapitulatif de votre réservation ainsi que votre carte d'embarquement
+    </p>
+</section>
+
+  <section class="purchasedBooking">
+      <article class="purchasedBooking__infos">
+        <h2 class="purchasedBooking__infos__title">Informations réservation</h2>
+        <ul>
+          <li>
+            <span class="purchasedBooking__infos--bold">N° de réservation:</span>
+            <?= htmlspecialchars( $bookingValues['id_booking'] ); ?>
+          </li>
+          <li>
+            <span class="purchasedBooking__infos--bold">Réservé le:</span>
+            <?= htmlspecialchars( $bookingDate ); ?>
+          </li>
+          <li>
+            <span class="purchasedBooking__infos--bold">Montant total:</span>
+            <?= htmlspecialchars( $bookingValues['total_price'] ); ?>
+            €
+          </li>
+        </ul>
+      </article>
+      
+      <article class="purchasedBooking__infos">
+        <h2 class="purchasedBooking__infos__title">Informations sur le voyage</h2>
+        <ul>
+          <li>
+            <span class="purchasedBooking__infos--bold">Nom et prénom:</span>
+            <?= htmlspecialchars( $bookingValues['lastname'] ); ?>
+            <?= htmlspecialchars( $bookingValues['firstname'] ); ?>
+          </li>
+          <li>
+            <span class="purchasedBooking__infos--bold">Ville de départ:</span>
+            <?= htmlspecialchars( $bookingValues['destination_departure'] ); ?>
+          </li>
+          <li>
+            <span class="purchasedBooking__infos--bold">Ville d'arrivée:</span>
+            <?= htmlspecialchars( $bookingValues['destination_arrival'] ); ?>
+          </li>
+          <li>
+            <span class="purchasedBooking__infos--bold">Embarquement le:</span>
+            <?= htmlspecialchars( $travelDate ); ?>
+          </li>
+        </ul>
+      </article>
+  </section>
+
+  <div class="purchasedBooking">
+    <p>
+      Vous pouvez retrouver ces informations dans votre
+      <a href="index.php?route=userAccount" title="Mon espace">
+        Espace personnel
+      </a>
+      à la rubrique
+      <a href="index.php?route=bookingsUser" title="Mes reservations">
+        Mes reservations
+      </a>
+      . Votre carte d'identité et/ou votre passeport seront nécessaires le jour du départ !
+    </p>
+    <p class="purchasedBooking__thanks">
+      Nous vous souhaitons un agréable voyage !
+    </p>
+  </div>

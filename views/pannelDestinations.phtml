@@ -1,0 +1,130 @@
+<!--affichage gestion destinations-->
+<nav>
+  <ul>
+    <li>
+      <a href="index.php?route=userAccount" title="Mon espace">retour</a>
+    </li>
+    <li>
+      <a href="index.php?route=pannelUsers" title="Liste des utilisateurs"
+        >Liste des utilisateurs</a
+      >
+    </li>
+    <li>
+      <a href="index.php?route=pannelBookings" title="Liste des réservations"
+        >Liste des réservations</a
+      >
+    </li>
+  </ul>
+</nav>
+<section>
+  <div>
+    <h1>Destinations :</h1>
+    <div>
+      <form>
+        <label for="search_destinations">Recherche :</label>
+        <input
+          type="text"
+          id="search_destinations"
+          class="prevent_enter"
+          name="search_destinations"
+        />
+      </form>
+    </div>
+    <p>
+      <a href="index.php?route=formAddDestinations" title="ajout de destination"
+        >Ajouter+</a
+      >
+    </p>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Pays</th>
+        <th>Ville</th>
+        <th>Continent</th>
+        <th>Description</th>
+        <th>Prix(€)</th>
+        <th>Statut</th>
+        <th>Date d'ajout</th>
+        <th>Info img</th>
+        <th>Dispo.</th>
+      </tr>
+    </thead>
+    <tbody id="target">
+      <?php foreach( $destinations as $destination ) : ?>
+      <tr>
+        <td>
+          <?= htmlspecialchars( $destination['id_destination'] ); ?>
+        </td>
+        <td>
+          <?= htmlspecialchars( $destination['country'] ); ?>
+        </td>
+        <td>
+          <?= htmlspecialchars( $destination['city'] ); ?>
+        </td>
+        <td>
+          <?= htmlspecialchars( $destination['world_area'] ); ?>
+        </td>
+        <td>
+          <p>
+            <a
+              href="index.php?route=detailsDescriptionDestination&destinationid=<?= htmlspecialchars( $destination['id_destination'] ); ?>"
+              title="Voir description"
+            >
+              <img src="public/img/zoom.svg" alt="détails"
+            /></a>
+          </p>
+        </td>
+        <td>
+          <?= htmlspecialchars( $destination['price'] ); ?>
+        </td>
+        <td>
+          <?= htmlspecialchars( $destination['status'] ); ?>
+        </td>
+        <td>
+          <?= htmlspecialchars( $destination['registration_date'] ); ?>
+        </td>
+        <td>
+          <a
+            href="index.php?route=detailsPictures&pictureid=<?= htmlspecialchars( $destination['picture_id'] ); ?>"
+            title="Détails photo"
+            ><?= htmlspecialchars( $destination['picture_id'] ); ?></a
+          >
+        </td>
+        <td>
+          <?php if( htmlspecialchars( $destination['is_available'] === 1 ) ) :?>
+          <p>
+            <img src="public/img/check.svg" alt="oui" />
+          </p>
+          <?php else : ?>
+          <p>
+            <img src="public/img/canceled.svg" alt="non" />
+          </p>
+          <?php endif; ?>
+        </td>
+        <td>
+          <p>
+            <a
+              href="index.php?route=formEditDestinations&destinationid=<?= htmlspecialchars( $destination['id_destination'] ); ?>&pictureid=<?= htmlspecialchars( $destination['picture_id'] ); ?>"
+              title="Modification"
+            >
+              <img src="public/img/edit.svg" alt="modifier"
+            /></a>
+          </p>
+        </td>
+        <td>
+          <p>
+            <a
+              href="index.php?route=formDeleteDestinations&destinationid=<?= htmlspecialchars( $destination['id_destination'] ); ?>&pictureid=<?= htmlspecialchars( $destination['picture_id'] ); ?>"
+              title="Suppression"
+            >
+              <img src="public/img/delete.svg" alt="supprimer"
+            /></a>
+          </p>
+        </td>
+      </tr>
+      <?php endforeach ?>
+    </tbody>
+  </table>
+</section>

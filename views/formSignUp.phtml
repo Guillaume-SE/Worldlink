@@ -1,0 +1,80 @@
+<!--formulaire d'inscription-->
+<section class="signUp">
+  <h1 class="signUp__title">Inscrivez-vous</h1>
+  <p class="signUp__descr">
+    Ce site offrant des services factices, vous pouvez mettre de fausses
+    informations.
+  </p>
+  <p class="signUp__descr">
+    Cependant, le site ne disposant pas de fonction mot de passe oublié, veillez à
+    choisir un mot de passe facile à retenir car il sera nécessaire si vous voulez
+    supprimer votre compte !
+  </p>
+  <p class="signUp__descr">
+    Les champs<sup>*</sup> sont obligatoires
+  </p>
+  
+  <form action="index.php?route=submitSignUp" method="POST">
+      <label class="signUp__input_descr" for="lastname">Nom<sup>*</sup></label>
+      <input class="signUp__input" type="text" name="lastname" required />
+  
+      <?php if( isset($_SESSION['registerErrors']['lastnameError']) ) : ?>
+      <?php foreach( $_SESSION['registerErrors']['lastnameError'] as $errorMessage ) : ?>
+      <span class="error_message">
+        <?= $errorMessage ?>
+      </span>
+      <?php endforeach; ?>
+      <?php endif; ?>
+  
+      <label class="signUp__input_descr" for="firstname">Prénom<sup>*</sup></label>
+      <input class="signUp__input" type="text" name="firstname" required />
+  
+      <?php if( isset($_SESSION['registerErrors']['firstnameError']) ) : ?>
+      <?php foreach( $_SESSION['registerErrors']['firstnameError'] as $errorMessage ) : ?>
+      <span class="error_message">
+        <?= $errorMessage ?>
+      </span>
+      <?php endforeach; ?>
+      <?php endif; ?>
+  
+      <label class="signUp__input_descr" for="mail">Adresse mail<sup>*</sup></label>
+      <input class="signUp__input" type="email" name="mail" required />
+  
+      <?php if( isset($_SESSION['registerErrors']['mailError']) ) : ?>
+      <?php foreach( $_SESSION['registerErrors']['mailError'] as $errorMessage ) : ?>
+      <span class="error_message">
+        <?= $errorMessage ?>
+      </span>
+      <?php endforeach; ?>
+      <?php endif; ?>
+  
+      <label class="signUp__input_descr" for="password">Mot de passe<sup>*</sup></label>
+      <input class="signUp__input" type="password" name="password" required />
+      
+      <?php if( isset($_SESSION['registerErrors']['passwordError']) ) : ?>
+      <span class="error_message">
+        <?= $_SESSION['registerErrors']['passwordError'] ?>
+      </span>
+      <?php endif; ?>
+  
+      <label class="signUp__input_descr" for="password2">Confirmer le mot de passe<sup>*</sup></label>
+      <input class="signUp__input" type="password" name="password2" required />
+      
+      <?php if( isset($_SESSION['registerErrors']['passwordError']) ) : ?>
+      <span class="error_message">
+        <?= $_SESSION['registerErrors']['passwordError'] ?>
+      </span>
+      <?php endif; ?>
+  
+    <div>
+      <input type="hidden" name="bot_trap" />
+    </div>
+  
+      <button class="signUp__btn" type="submit" name="register">Créer mon compte</button>
+  </form>
+  
+  <p>
+    Déjà un compte ?
+    <a class="signUp__link" href="index.php?route=formSignIn" title="Se connecter">Connectez-vous !</a>
+  </p>
+</section>

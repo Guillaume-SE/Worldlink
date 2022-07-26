@@ -1,0 +1,29 @@
+<section>
+  <h1>Êtes-vous sûr de vouloir annuler cette réservation ?</h1>
+  <div>
+    <form
+      action="index.php?route=submitCancelBooking&bookingid=<?= htmlspecialchars( $userBookingDetails['id_booking'] ); ?>"
+      method="POST"
+    >
+      <div>
+        <label for="check_cancel"
+          >Veuillez cocher cette case avant de valider</label
+        >
+        <input type="checkbox" name="check_cancel" required />
+        <?php if( isset( $_SESSION['formCancelBookingError']['checkCancelError'] ) ) : ?>
+        <span class="error_message">
+          <?= $_SESSION['formCancelBookingError']['checkCancelError'] ?>
+        </span>
+        <?php endif; ?>
+      </div>
+
+      <div>
+        <button type="submit">Valider</button>
+      </div>
+    </form>
+
+    <p>
+      <a href="index.php?route=bookingsUser" title="Retour">Annuler</a>
+    </p>
+  </div>
+</section>

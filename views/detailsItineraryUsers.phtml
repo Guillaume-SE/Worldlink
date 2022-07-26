@@ -1,0 +1,134 @@
+<!--affiche les 2 destinations choisies par l'utilisateur-->
+<div class="confirmBooking__description">
+  <h2 class="confirmBooking__title">Votre réservation est presque prête !</h2>
+  <p>
+    Envie de modifier votre itinéraire ? Rendez vous sur la page de 
+    <a href="index.php?route=homeDestinations" 
+       title="Nos destinations"
+       class="confirmBooking__link"
+    >
+      nos destinations
+    </a>
+  </p>
+</div>
+
+<section class="destinationCard_container">
+    <article class="destinationCard__card">
+      <div>
+          <img
+            class="destinationCard__img"
+            src="<?= htmlspecialchars( $departureValues['file'] ); ?>"
+            alt="<?= htmlspecialchars( $departureValues['caption'] ); ?>"
+          />
+      </div>
+      
+      <div class="destinationCard__infos">
+        <h2>
+          <?= htmlspecialchars( $departureValues['city'] ); ?>
+        </h2>
+        <p class="destinationCard__country">
+          <?= htmlspecialchars( $departureValues['country'] ); ?>
+        </p>
+        <p class="destinationCard__worldarea">
+          <?= htmlspecialchars( $departureValues['world_area'] ); ?>
+        </p>
+        <p class="destinationCard__price">
+          <?= htmlspecialchars( $departureValues['price'] ); ?> €
+        </p>
+        <div class="destinationCard__plane">
+          <p class="destinationCard__plane__text">
+            Départ
+          </p>
+          <img class="destinationCard__plane__img" src="public/img/departure-nofilled.svg" alt="">
+        </div>
+      </div>
+    </article>
+    
+    <article class="destinationCard__card">
+      <div>
+          <img
+            class="destinationCard__img"
+            src="<?= htmlspecialchars( $arrivalValues['file'] ); ?>"
+            alt="<?= htmlspecialchars( $arrivalValues['caption'] ); ?>"
+          />
+      </div>
+      
+      <div class="destinationCard__infos">
+        <h2>
+          <?= htmlspecialchars( $arrivalValues['city'] ); ?>
+        </h2>
+        <p class="destinationCard__country">
+          <?= htmlspecialchars( $arrivalValues['country'] ); ?>
+        </p>
+        <p class="destinationCard__worldarea">
+          <?= htmlspecialchars( $arrivalValues['world_area'] ); ?>
+        </p>
+        <p class="destinationCard__price">
+          <?= htmlspecialchars( $arrivalValues['price'] ); ?> €
+        </p>
+        
+        <div class="destinationCard__plane">
+          <p class="destinationCard__plane__text">
+            Arrivée
+          </p>
+          <img class="destinationCard__plane__img" src="public/img/arrival-nofilled.svg" alt="">
+        </div>
+      </div>
+    </article>
+    
+    <p class="confirmBooking__price">Montant total: <?= htmlspecialchars( $totalPrice ); ?>
+      €
+    </p>
+  </section>
+  
+  <?php if( $isConnected ): ?>
+  <section class="confirmBooking__datetime">
+      <div class="confirmBooking__datetime--background">
+        <form action="index.php?route=submitConfirmedItineraryUsers" method="POST">
+          <label class="confirmBooking__datetime_descr" for="travel_date">Jour de départ ( JJ-MM-AAAA )</label>
+          <input class="confirmBooking__date" 
+                 id="travel_date" 
+                 type="date" 
+                 name="travel_date" 
+                 min="2022-01-01" 
+                 pattern="\d{4}-\d{2}-\d{2}" 
+                 required
+          />
+    
+        <label class="confirmBooking__datetime_descr" for="travel_time">Heure de départ ( HH-MM )</label>
+        <input class="confirmBooking__time" 
+               id="travel_time" 
+               type="time" 
+               name="travel_time" 
+               step="60" 
+               required
+        />
+      
+      <?php if( isset( $_SESSION['formConfirmedItineraryUserErrors'] ) ) : ?>
+        <?php foreach( $_SESSION['formConfirmedItineraryUserErrors'] as $errorMessage ) : ?>
+            <span class="error_message">
+              <?= $errorMessage ?>
+              </span>
+        <?php endforeach; ?>
+      <?php endif; ?>
+      
+      </div>
+        
+        <button class="confirmBooking__button" type="submit" name="validate_itinerary">
+          Réserver
+        </button>
+      </form>
+  </section>
+  
+  <?php else: ?>
+  <div class="confirmBooking__auth">
+  <p>
+    Pour réserver veuillez vous 
+    <a class="confirmBooking__link" href="index.php?route=formSignIn&from=detailsItineraryUsers" title="Se connecter">
+      Connecter</a>
+    ou
+    <a class="confirmBooking__link" href="index.php?route=formSignUp&from=detailsItineraryUsers" title="S'inscrire">
+      Créer un compte</a>
+  </p>
+  </div>
+  <?php endif; ?>

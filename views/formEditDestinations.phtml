@@ -1,0 +1,151 @@
+<!--formulaire modification d'une destination-->
+<section>
+    <p><a href="index.php?route=pannelDestinations">retour</a></p>
+    <h1>Modification de la destination : <?= htmlspecialchars( $destination['city'] ); ?> (<?= htmlspecialchars( $destination['country'] ); ?>)</h1>
+  <!--enctype='multipart/form-data' pour envoi fichier dans un form-->
+    <form action="index.php?route=submitEditDestinations&destinationid=<?= htmlspecialchars( $destination['id_destination'] ); ?>&pictureid=<?= htmlspecialchars( $destination['picture_id'] ); ?>" method="POST" enctype='multipart/form-data'>
+
+      <div>
+        <label for="country">Pays<sup>*</sup></label>
+        <input type="text" class="prevent_enter" name="country" placeholder="50 caractères max" value="<?= htmlspecialchars( $destination['country'] ); ?>" required/>
+        
+        <?php if( isset($_SESSION['formDestinationsErrors']['countryError']) ) : ?>
+        <?php foreach( $_SESSION['formDestinationsErrors']['countryError'] as $errorMessage ) : ?>
+            <span class="error_message">
+              <?= $errorMessage ?>
+            </span>
+        <?php endforeach; ?>
+        <?php endif; ?>
+      
+      </div>
+
+      <div>
+        <label for="city">Ville<sup>*</sup></label>
+        <input type="text" class="prevent_enter" name="city" placeholder="60 caractères max" value="<?= htmlspecialchars( $destination['city'] ); ?>" required/>
+        
+        <?php if( isset($_SESSION['formDestinationsErrors']['cityError']) ) : ?>
+        <?php foreach( $_SESSION['formDestinationsErrors']['cityError'] as $errorMessage ) : ?>
+            <span class="error_message">
+              <?= $errorMessage ?>
+            </span>
+        <?php endforeach; ?>
+        <?php endif; ?>
+      
+      </div>
+
+      <div>
+        <label for="world_area">Continent</label>
+        <select name="world_area" value="<?= htmlspecialchars( $destination['world_area'] ); ?>" required/>
+            <!--selected met la valeur en selectionné par défaut-->
+            <option <?= $destination['world_area'] === 'Europe' ? 'selected' : ''; ?>           value="Europe">Europe</option>
+            <option <?= $destination['world_area'] === 'Asie' ? 'selected' : ''; ?>             value="Asie">Asie</option>
+            <option <?= $destination['world_area'] === 'Amérique du Nord' ? 'selected' : ''; ?> value="Amérique du Nord">Amérique du Nord</option>
+            <option <?= $destination['world_area'] === 'Amérique du Sud' ? 'selected' : ''; ?>  value="Amérique du Sud">Amérique du Sud</option>
+            <option <?= $destination['world_area'] === 'Afrique' ? 'selected' : ''; ?>          value="Afrique">Afrique</option>
+            <option <?= $destination['world_area'] === 'Océanie' ? 'selected' : ''; ?>          value="Océanie">Océanie</option>
+            <option <?= $destination['world_area'] === 'Antarctique' ? 'selected' : ''; ?>      value="Antarctique">Antarctique</option>
+            <option <?= $destination['world_area'] === 'Inconnu' ? 'selected' : ''; ?>          value="Inconnu">Inconnu</option>
+        </select>
+        
+        <?php if( isset($_SESSION['formDestinationsErrors']['world_areaError']) ) : ?>
+        <?php foreach( $_SESSION['formDestinationsErrors']['world_areaError'] as $errorMessage ) : ?>
+            <span class="error_message">
+              <?= $errorMessage ?>
+            </span>
+        <?php endforeach; ?>
+        <?php endif; ?>
+      
+      </div>
+
+      <div>
+        <label for="description">Description<sup>*</sup></label>
+        <textarea name="description" rows="10" cols="80" wrap="50" required><?= htmlspecialchars( $destination['description'] ); ?></textarea>
+        
+        <?php if( isset($_SESSION['formDestinationsErrors']['descriptionError']) ) : ?>
+        <?php foreach( $_SESSION['formDestinationsErrors']['descriptionError'] as $errorMessage ) : ?>
+            <span class="error_message">
+              <?= $errorMessage ?>
+            </span>
+        <?php endforeach; ?>
+        <?php endif; ?>
+      
+      </div>
+
+      <div>
+        <label for="price">Prix de base(€)<sup>*</sup></label>
+        <input type="number" class="prevent_enter" name="price" min="1" max="9999999" value="<?= htmlspecialchars( $destination['price'] ); ?>" required/>
+        
+        <?php if( isset($_SESSION['formDestinationsErrors']['priceError']) ) : ?>
+        <?php foreach( $_SESSION['formDestinationsErrors']['priceError'] as $errorMessage ) : ?>
+            <span class="error_message">
+              <?= $errorMessage ?>
+            </span>
+        <?php endforeach; ?>
+        <?php endif; ?>
+      
+      </div>
+
+      <div>
+        <label for="file">Image illustrant la destination (2Mo max)<sup>*</sup></label>
+        <input type="file" name="file" accept=".jpg,.jpeg,.png" />
+        
+        <?php if( isset($_SESSION['formDestinationsErrors']['fileError']) ) : ?>
+        <?php foreach( $_SESSION['formDestinationsErrors']['fileError'] as $errorMessage ) : ?>
+            <span class="error_message">
+              <?= $errorMessage ?>
+            </span>
+        <?php endforeach; ?>
+        <?php endif; ?>
+      
+      </div>
+      <!--chemin image déjà existante pour controller-->
+      <div>
+        <input id="current_file" name="current_file" type="hidden" value="<?= htmlspecialchars( $picture['file'] ); ?>">
+      </div>
+
+      <div>
+        <label for="caption">Description claire et succincte de ce qui est visible à l'image<sup>*</sup></label>
+        <textarea name="caption" rows="5" cols="40" wrap="50" placeholder="120 caractères max et évitez les 'images de...' ou 'photo de'... " required><?= htmlspecialchars( $picture['caption'] ); ?></textarea>
+        
+        <?php if( isset($_SESSION['formDestinationsErrors']['captionError']) ) : ?>
+        <?php foreach( $_SESSION['formDestinationsErrors']['captionError'] as $errorMessage ) : ?>
+            <span class="error_message">
+              <?= $errorMessage ?>
+            </span>
+        <?php endforeach; ?>
+        <?php endif; ?>
+      
+      </div>
+
+      <div>
+        <label for="status">Statut de la destination</label>
+        <select name="status" required/>
+          
+            <option <?= $destination['status'] === 'Nouveauté' ? 'selected' : ''; ?>       value="Nouveauté">Nouveauté</option>
+            <option <?= $destination['status'] === 'Normal' ? 'selected' : ''; ?>          value="Normal">Normal</option>
+            <option <?= $destination['status'] === 'Prochainement' ? 'selected' : ''; ?>   value="Prochainement">Prochainement</option>
+            <option <?= $destination['status'] === 'Bientôt retirée' ? 'selected' : ''; ?> value="Bientôt retirée">Bientôt retirée</option>
+            <option <?= $destination['status'] === 'Top 1 départ' ? 'selected' : ''; ?>    value="Top 1 départ">Top 1 départ</option>
+            <option <?= $destination['status'] === 'Top 1 arrivée' ? 'selected' : ''; ?>   value="Top 1 arrivée">Top 1 arrivée</option>
+            <option <?= $destination['status'] === 'Indisponible' ? 'selected' : ''; ?>    value="Indisponible">Indisponible</option>
+        </select>
+        
+        <?php if( isset($_SESSION['formDestinationsErrors']['statusError']) ) : ?>
+        <?php foreach( $_SESSION['formDestinationsErrors']['statusError'] as $errorMessage ) : ?>
+            <span class="error_message">
+              <?= $errorMessage ?>
+            </span>
+        <?php endforeach; ?>
+        <?php endif; ?>
+      
+      </div>
+
+      <div>
+        <label for="is_available">Réservations possible ?(oui si cochée)</label>
+        <input type="checkbox" name="is_available" value="" checked/>
+      </div>
+      <div>
+        <button type="submit" name="validate">Valider</button>
+      </div>
+    </form>
+  </section>

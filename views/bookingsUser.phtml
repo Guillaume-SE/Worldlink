@@ -1,0 +1,54 @@
+<!--réservations de l'utilisateur-->
+<div class="userBookings--return_btn">
+    <a href="index.php?route=userAccount" 
+       title="Mon espace"
+       class=" return_btn"
+    >
+      retour
+   </a>
+</div>
+
+<section class="userBookings">
+  <h1 class="userBookings__title">Vos réservations</h1>
+  
+  <?php if ( empty( $userBookings) ) :?>
+  
+  <p>Vous n'avez pas encore de réservations</p>
+  
+  <?php else : ?>
+  <?php foreach( $userBookings as $booking ) : ?>
+  
+  <article class="userBookings__infos">
+    <ul>
+      <li>
+        <span class="purchasedBooking__infos--bold">Référence: </span>
+        <a
+          href="index.php?route=detailsBookingUser&bookingid=<?= htmlspecialchars( $booking['id_booking'] ); ?>"
+          title="Détails réservation"
+          class="userBookings__link">
+          <?= htmlspecialchars( $booking['id_booking'] ); ?>
+        </a>
+      </li>
+      
+      <li>
+        <span class="purchasedBooking__infos--bold">Réservé le: </span>
+        <?= htmlspecialchars( $booking['booking_date']  ); ?>
+      </li>
+      
+      <li>
+        <span class="purchasedBooking__infos--bold">Montant: </span>
+        <?= htmlspecialchars( $booking['total_price'] ); ?>
+         €
+      </li>
+      
+      <li>
+        <span class="purchasedBooking__infos--bold">Statut de la réservation: </span>
+        <?= htmlspecialchars( $booking['status'] ); ?>
+      </li>
+    </ul>
+  </article>
+  
+  <?php endforeach ?>
+  <?php endif; ?>
+
+</section>

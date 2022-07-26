@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<!--HELLO !-->
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="Language" content="fr" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta
+      name="description"
+      content="Votre moyen de transport express et sécurisé, vers de nombreuses grandes villes à travers le monde"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+    <title>
+      Worldlink : Reservations de voyages express à travers le monde.
+    </title>
+    <link rel="icon" type="image/gif" href="public/img/favicon-circle.png" />
+    <link rel="stylesheet" href="public/css/style.css" />
+  </head>
+  <body>
+    <!--header avec le logo + nav-->
+    <header>
+      <div class="header__logo_block--mobile">
+      <a href="index.php?route=home" title="Accueil">
+            <img
+              class="header__logo"
+             src="public/img/logo.svg"
+            alt="inscription WorldLink associé à deux courbes, rouge et bleue"
+          />
+        </a>
+      </div>
+      
+      <nav class="header__navbar">
+          <ul class="header__navbar__blocklist">
+            <li class="header__navbar__list navbar__list--hidden">
+            <a href="index.php?route=home" title="Accueil">
+            <img
+              class="header__logo--desktop header__logo"
+             src="public/img/logo.svg"
+            alt="inscription WorldLink associé à deux courbes, rouge et bleue"
+          />
+        </a>
+        </li>
+            <li class="header__navbar__list">
+              <a class="header__navbar__link--icon navbar_icon--red" 
+                 href="index.php?route=homeDestinations" 
+                 title="Destinations"
+                 data-route="homeDestinations"
+              >
+                <img class="header__navbar__img" src="public/img/departure.svg" alt="Destinations">
+              </a>
+              <a class="header_navbar__link--text navbar_text--red" 
+                 href="index.php?route=homeDestinations" 
+                 title="Destinations"
+                 data-route="homeDestinations"
+              >
+                Destinations</a
+              >
+            </li>
+            
+            <li class="header__navbar__list">
+              <a class="header__navbar__link--icon navbar_icon--red" 
+                 href="index.php?route=homeServices" 
+                 title="Services"
+                 data-route="homeServices"
+              >
+                <img class="header__navbar__img" src="public/img/plus.svg" alt="Services">
+              </a>
+              <a class="header_navbar__link--text navbar_text--red" 
+                 href="index.php?route=homeServices" 
+                 title="Services"
+                 data-route="homeServices"
+              >
+                Services</a>
+            </li>
+            
+            <li class="header__navbar__list navbar__list--hidden">
+              <a class="header_navbar__link--text navbar_text--red" 
+                 href="index.php?route=homeHelp" 
+                 title="Aide"
+                 data-route="homeHelp"
+              >
+                Aide</a>
+            </li>
+          
+          <li class="header__navbar__list">
+              <a class="header__navbar__link--icon navbar_icon--red" 
+                 href="index.php?route=userAccount" 
+                 title="Espace personnel"
+                 data-route="userAccount"
+              >
+                <img class="header__navbar__img" src="public/img/user-account.svg" alt="Mon espace">
+              </a>
+              <a class="header_navbar__link--text navbar_text--red" 
+                 href="index.php?route=userAccount" 
+                 title="Espace personnel"
+                 data-route="userAccount"
+              >
+                Mon espace
+              </a>
+          </li>
+          </ul>
+      </nav>
+    </header>
+    <!--fin du HEADER-->
+
+    <main>
+      <?php include_once $view; ?>
+    </main>
+
+    <!--début footer-->
+    <footer>
+      <div class="footer__logo_block">
+        <a href="index.php?route=home" title="Vers page d'acceuil">
+          <!--logo-->
+          <img
+            class="footer__logo"
+            src="public/img/logo.svg"
+            alt="inscription WorldLink associé à deux courbes, rouge et bleue"
+          />
+        </a>
+      </div>
+      <!--réseaux sociaux-->
+      <div class="socialnetwork_container">
+        <h3 class="socialnetwork__title">Nos réseaux</h3>
+        <ul>
+          <li class="socialnetwork--github">
+            <a
+              href="https://github.com/Guillaume-SE?tab=repositories"
+              title="vers le site Github"
+              target="_blank"
+            >
+              <img src="public/img/icone-github.svg" alt="github" />
+            Github</a>
+          </li>
+          <li>
+            <a
+              href="#"
+              title="vers le site Linkedin"
+              target="_blank"
+            >
+              <img src="public/img/icone-linkedin.svg" alt="linkedin" />
+            Linkedin</a>
+          </li>
+        </ul>
+      </div>
+      <!--rubriques annexes-->
+      <div class="rubrics_container">
+        <h3 class="rubrics__title">Rubriques</h3>
+        <ul>
+          <li class="rubrics--about">
+            <a href="#" title="À propos">
+              À propos</a>
+          </li>
+          <li>
+            <a href="#" title="Contactez-nous">
+              Contact
+            </a>
+          </li>
+          <li class="rubrics--faq">
+            <a href="#" title="Aide">
+              Questions & réponses</a>
+          </li>
+        </ul>
+      </div>
+      
+      <div>
+        <p>
+          <sup>©</sup>2022 WorldlinkGSE
+        </p>
+      </div>
+    </footer>
+    <!-- fin footer-->
+
+    <script src="public/js/script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,72 @@
+<!--compte utilisateur et gestion du compte-->
+<section class="userAccount">
+  <h1 class="userAccount__title">
+    Bonjour
+    <?= htmlspecialchars( $userInfos['firstname'] ) ?>
+    !
+  </h1>
+
+  <ul class="userAccount__list">
+    <h2 class="userAccount__list__title">Mon compte</h2>
+    <li>
+      <a
+        class="userAccount__link"
+        href="index.php?route=informationsUser"
+        title="Mes informations"
+        >Mes informations</a
+      >
+    </li>
+    <li>
+      <a
+        class="userAccount__link"
+        href="index.php?route=bookingsUser"
+        title="Mes reservations"
+      >
+        Mes reservations
+      </a>
+    </li>
+    <li>
+      <a
+        class="userAccount__link userAccount__link--red"
+        href="index.php?route=logout"
+        title="Se deconnecter"
+      >
+        Déconnexion
+      </a>
+    </li>
+  </ul>
+
+  <?php if( $isAdminOrSuperAdmin ): ?>
+
+  <ul class="userAccount__list">
+    <li>
+      <h2 class="userAccount__list__title">Gestion du site</h2>
+    </li>
+    <li>
+      <a
+        class="userAccount__link"
+        href="index.php?route=pannelDestinations"
+        title="Gestion des destinations"
+      >
+        Liste des destinations
+      </a>
+    </li>
+    <li>
+      <a
+        class="userAccount__link"
+        href="index.php?route=pannelUsers"
+        title="Liste des utilisateurs"
+        >Liste des utilisateurs</a
+      >
+    </li>
+    <li>
+      <a
+        class="userAccount__link"
+        href="index.php?route=pannelBookings"
+        title="Liste des réservations"
+        >Liste des réservations</a
+      >
+    </li>
+  </ul>
+  <?php endif; ?>
+</section>

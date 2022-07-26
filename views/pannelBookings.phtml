@@ -1,0 +1,97 @@
+<!--liste des réservations-->
+<nav>
+  <ul>
+    <li>
+      <a
+        href="index.php?route=userAccount"
+        title="Mon espace"
+        class="return_btn"
+        >retour</a
+      >
+    </li>
+    <li>
+      <a
+        href="index.php?route=pannelDestinations"
+        title="Liste des destinations"
+        >Liste des destinations</a
+      >
+    </li>
+    <li>
+      <a href="index.php?route=pannelUsers" title="Liste des utilisateurs"
+        >Liste des utilisateurs</a
+      >
+    </li>
+  </ul>
+</nav>
+<section>
+  <div>
+    <h1>Réservations :</h1>
+    <form>
+      <label for="search_bookings">Recherche :</label>
+      <input
+        type="text"
+        id="search_bookings"
+        class="prevent_enter"
+        name="search_bookings"
+      />
+    </form>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>N° résa</th>
+        <th>N° client</th>
+        <th>Date de réservation</th>
+        <th>Date de voyage</th>
+        <th>Ville départ</th>
+        <th>Ville d'arrivée</th>
+        <th>Montant(€)</th>
+        <th>Statut</th>
+      </tr>
+    </thead>
+    <tbody id="target">
+      <?php foreach( $bookings as $booking ) : ?>
+      <tr>
+        <td>
+          <?= htmlspecialchars( $booking['id_booking'] ); ?>
+        </td>
+        <td>
+          <?php if ( htmlspecialchars( $booking['user_id'] ) == null ) :?>
+          <p>
+            <img src="public/img/deleted-user.svg" alt="supprimé" />
+          </p>
+          <?php else : ?>
+          <?= htmlspecialchars( $booking['user_id'] ); ?>
+          <?php endif; ?>
+        </td>
+        <td>
+          <?= htmlspecialchars( $booking['booking_date'] ); ?>
+        </td>
+        <td>
+          <?= htmlspecialchars( $booking['travel_date'] ); ?>
+        </td>
+        <td>
+          <?= htmlspecialchars( $booking['destination_departure'] ); ?>
+        </td>
+        <td>
+          <?= htmlspecialchars( $booking['destination_arrival'] ); ?>
+        </td>
+        <td>
+          <?= htmlspecialchars( $booking['total_price'] ); ?>
+        </td>
+        <td>
+          <?php if ( htmlspecialchars( $booking['status'] ) === "Confirmée"  ) :?>
+          <p>
+            <img src="public/img/check.svg" alt="confirmée" />
+          </p>
+          <?php else : ?>
+          <p>
+            <img src="public/img/refund.svg" alt="remboursée" />
+          </p>
+          <?php endif; ?>
+        </td>
+      </tr>
+      <?php endforeach ?>
+    </tbody>
+  </table>
+</section>

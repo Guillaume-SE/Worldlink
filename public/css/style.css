@@ -1,0 +1,751 @@
+/**** VARIABLES ****/
+:root {
+  --main-font-family: "Montserrat", sans-serif;
+  --title-font-family: "Poppins", sans-serif;
+  --h1-font-size: 1.5em;
+  --h2-font-size: 1.3em;
+  --h3-font-size: 1.1em;
+  --text-font-size: 1em;
+  --line-height: 1.8em;
+  --blue-light: #005F80;
+  --blue-dark: #004E80;
+  --white: #FFFFFF;
+  --black: #000000;
+  --red: #A62639;
+  --red-error: #f62121;
+  --brown: #76414B;
+  --orange: #F1AA3C;
+  --green: #08A046;
+  --background-white: #FFFFFF;
+  --background-blue-light: #005F80;
+  --background-blue-dark: #004E80;
+  --background-orange: #F1AA3C;
+  --background-red: #A62639;
+  --background-aqua: #D0EEFF;
+  --background-grey-light: #E7E9EB;
+  --background-black-overlay: rgba(0, 0, 0, 0.5);
+  --background-grey-overlay: rgba(0, 0, 0, 0.4);
+}
+
+/**** RESET ****/
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+ul,
+ol {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+/**** GENERAL ****/
+
+/** font **/
+body {
+  font-size: 16px;
+}
+h1 {
+  font-size: var(--h1-font-size);
+}
+h2 {
+  font-size: var(--h2-font-size);
+}
+h3 {
+  font-size: var(--h3-font-size);
+}
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--title-font-family);
+}
+p,
+label,
+a,
+button,
+select,
+input{
+  font-family: var(--main-font-family);
+  font-size: var(--text-font-size);
+}
+button, select, input, label, sup {
+  font-weight: bold;
+}
+a {
+  color: var(--black);
+  font-weight: bold;
+}
+
+/**** style ****/
+button {
+  cursor: pointer;
+}
+button:active {
+  transform: translateY(2px);
+}
+sup {
+  color: var(--red);
+}
+.error_message {
+  font-weight: bold;
+  color: var(--red-error);
+}
+.return_btn {
+  background-color: var(--background-blue-light);
+  border-radius: 3px;
+  color: var(--white);
+  padding: 0.5em;
+}
+.return_btn:hover {
+  background-color: var(--background-blue-dark);
+}
+
+/**** HEADER ****/
+
+.header__logo {
+  width: 8em;
+  height: auto;
+}
+.header__logo_block--mobile {
+  width: 100%;
+  height: auto;
+  text-align: center;
+}
+.header_logo--desktop,
+.navbar__list--hidden,
+.header_navbar__link--text {
+  display: none;
+}
+.header__navbar {
+  position: fixed;
+  flex-wrap: wrap;
+  z-index: 1;
+  width: 100%;
+  bottom: 0;
+  background-color: var(--background-white);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.8), 0 1px 2px rgba(0,0,0,0.24);
+}
+.header__navbar__blocklist {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.header__navbar__list {
+  padding: 5px 0;
+}
+.header__navbar__icon--red {
+  filter: invert(22%) sepia(39%) saturate(3222%) hue-rotate(326deg) brightness(93%) contrast(97%);
+}
+.header__navbar__img {
+  width: 30px;
+  height: 30px;
+}
+
+/**** LANDING PAGE ****/
+
+/**** form ****/
+.pickDestination_container {
+  background: url(../img/background.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.pickDestination--overlay {
+  background-color: var(--background-grey-overlay);
+  width: 100%;
+  height: 100%;
+  padding-bottom: 2em;
+}
+.pickDestination__description {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 1em;
+  padding-top: 0.8em;
+  text-align: center;
+  color: var(--white);
+  font-weight: bold;
+}
+.pickDestination__title {
+  margin-bottom: 0.5em;
+}
+.pickDestination__form {
+  width: 95%;
+  max-width: 600px;
+  margin: auto;
+  padding: 1.5em 2em;
+  text-align: center;
+  background-color: var(--background-black-overlay);
+  color: var(--white);
+  font-weight: bold;
+}
+.pickDestination__select {
+  width: 100%;
+  height: 3em;
+  margin-top: 0.5em;
+  text-align: center;
+}
+.pickDestination__btn--swap {
+  margin: 1em 0;
+  width: 2.5em;
+  height: 2.5em;
+  border: 1px var(--blue-light) solid;
+  border-radius: 50%;
+}
+.pickDestination__btn--img {
+  transform: rotate(90deg);
+  transition: all 0.5s linear;
+  width: 100%;
+  height: auto;
+  margin: auto;
+}
+.pickDestination__btn--img_alt {
+  transform: rotate(270deg);
+  transition: all 0.5s linear;
+  width: 100%;
+  height: auto;
+  margin: auto;
+  
+}
+.pickDestination__btn--submit {
+  width: 100%;
+  margin-top: 1em;
+  border: none;
+  padding: 1em 1em;
+  border-radius: 3px;
+  border: solid 1px var(--white);
+  background-color: var(--background-blue-light);
+  color: var(--white);
+  transition-duration: 0.5s;
+}
+.pickDestination__btn--submit:active {
+  background-color: var(--background-white);
+  color: var(--white);
+}
+.pickDestination__btn--submit:hover {
+  background-color: var(--background-blue-dark);
+}
+.pickDestination__link_block {
+  padding-bottom: 1em;
+}
+.pickDestination__link{
+  display: block;
+  width: 60%;
+  margin: 1em auto auto auto;
+  padding: 1em 0;
+  color: var(--white);
+  text-align: center;
+  align-items: center;
+  background-color : var(--background-blue-light);
+  opacity: 0.7;
+  border-radius: 3px;
+  border: solid 2px var(--white);
+  transition-duration: 0.8s;
+}
+.pickDestination__link:hover {
+  background-color: var(--background-white);
+  opacity: 0.8;
+  color: var(--black);
+}
+
+/**** services ****/
+
+.home_services {
+  width: 95%;
+  margin: 1.5em auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+.home_services__title_block {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.home_services__title {
+  width: 20%;
+  text-align: center;
+  border-bottom: solid 1px var(--black);
+}
+.home_services__infos {
+  text-align: center;
+  margin: 1em auto;
+}
+.home_services__link {
+  display: block;
+  width: 40%;
+  margin: auto;
+  padding: 1em 0;
+  text-align: center;
+  color: var(--white);
+  background-color : var(--background-blue-light);
+  border-radius: 3%;
+  border: solid 2px var(--black);
+  text-decoration: underline;
+  transition: 1s;
+}
+.home_services__link:hover {
+  border: 2px solid var(--blue-light);
+  color: var(--blue-light);
+  background-color: var(--background-white);
+}
+
+/***** HOME DESTINATIONS ****/
+/**** css form --> LANDING PAGE ****/
+
+.ajax_search {
+  text-align: center;
+  margin: 2em auto;
+  padding: 1em;
+  color: var(--white);
+  background-color: var(--background-blue-light);
+}
+.ajax_search_text {
+  display: block;
+  width: 30%;
+  min-width: 250px;
+  height: 40px;
+  margin: 1em auto 0.5em auto;
+  border-radius: 4px;
+  border: none;
+  text-align: center;
+}
+.destinationCard_container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+.destinationCard__card {
+  width: 300px;
+  margin: 2em;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+.destinationCard__card:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.destinationCard__img {
+  width: 100%;
+  height: auto;
+  max-width: 300px;
+  max-height: 200px;
+  height: auto;
+}
+.destinationCard__infos {
+  padding: 1em 0.5em 0 0.5em;
+  position: relative;
+}
+.destinationCard__country {
+  margin: 0.4em auto;
+}
+.destinationCard__worldarea {
+  color: var(--brown);
+  margin-bottom: 0.5em;
+}
+.destinationCard__price {
+  position: absolute;
+  top: 40px;
+  right: 22px;
+  font-weight: 900;
+}
+.destinationCard__btn_block {
+  margin-top: 1em;
+  text-align: center;
+}
+.destinationCard__btn--departure,
+.destinationCard__btn--arrival {
+  width: 95%;
+  margin-bottom: 0.5em;
+  padding: 1em 0;
+  border: none;
+  background-color: var(--background-blue-light);
+  color: var(--white);
+  transition: transform .4s;
+}
+.destinationCard__btn--arrival {
+  background-color: var(--background-blue-dark);
+}
+
+/**** DETAILS ITINERARY USERS ****/
+
+/**** confirm message ****/
+.confirmBooking__description {
+  margin-bottom: 3em;
+  padding: 1em 0.5em;
+  min-height: 100px;
+  background-color: var(--background-blue-light);
+  color: var(--white);
+  text-align: center;
+}
+.confirmBooking__title {
+  margin-bottom: 1em;
+}
+.confirmBooking__link {
+  color: var(--white);
+  text-decoration: underline;
+}
+
+/**** destination card plane icon ****/
+.destinationCard__plane {
+  display: flex;
+  justify-content: center;
+}
+.destinationCard__plane__text {
+  display: flex;
+  align-items: center;
+  margin-right: 0.5em;
+  color: var(--red);
+  font-weight: 900;
+}
+.destinationCard__plane__img {
+  width: 55px;
+  height: 55px;
+}
+.confirmBooking__price {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: auto;
+  color: var(--red);
+  text-decoration: underline;
+  font-weight: 900;
+}
+.confirmBooking__auth {
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 2em auto;
+  background-color: var(--background-blue-light);
+  color: var(--white);
+}
+/**** date and time form ****/
+.confirmBooking__datetime {
+  width: 80%;
+  margin: 1.5em auto;
+  text-align: center;
+}
+.confirmBooking__datetime--background {
+  background-color: var(--background-grey-light);
+  padding-top: 1em;
+  padding-bottom: 0.5em;
+  border-radius: 4px;
+}
+.confirmBooking__datetime_descr {
+  color: var(--black);
+}
+.confirmBooking__date,
+.confirmBooking__time{
+  display: block;
+  height: 2em;
+  margin: 1em auto 1em auto;
+  padding: 0.6em;
+  border: solid 2px var(--blue-dark);
+  border-radius: 4px;
+}
+.confirmBooking__button {
+  background-color: var(--background-blue-light);
+  border-radius: 4px;
+  color: var(--white);
+  margin-top: 1em;
+  padding: 0.5em;
+}
+.confirmBooking__button:hover {
+  background-color: var(--background-blue-dark);
+}
+
+/**** DETAILS ITINERARY TICKETS ****/
+
+.purchasedBooking__descr {
+  width: 100%;
+  min-height: 100px;
+  background-color: var(--background-blue-light);
+  text-align: center;
+  color: var(--white);
+}
+.purchasedBooking__descr__title {
+  padding-top: 1em;
+}
+.purchasedBooking__descr__text {
+  padding: 1em 1em;
+}
+.purchasedBooking {
+  display: flex;
+  flex-wrap: wrap;
+  width: 95%;
+  margin: 2em auto;
+}
+.purchasedBooking__infos {
+  width: 90%;
+  margin: 1em auto;
+  padding: 1em 0.5em;
+  text-align: start;
+  background-color: var(--background-grey-light);
+  border-radius: 5px;
+  font-size: 1.2em;
+  line-height: var(--line-height);
+}
+.purchasedBooking__infos__title {
+  text-align: center;
+  margin-bottom: 0.5em;
+}
+.purchasedBooking__thanks {
+  padding-top: 1em;
+  text-align: center;
+  margin: auto;
+  color: var(--blue-dark);
+  font-weight: 900;
+}
+.purchasedBooking__infos--bold {
+  font-weight: bold;
+}
+.purchasedBooking__links {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-top: 1.5em;
+}
+.purchasedBooking__links--cancel_booking {
+  background-color: var(--red);
+  border-radius: 3px;
+  color: var(--white);
+  padding: 0.5em;
+}
+
+/**** SIGN IN + SIGN UP****/
+
+.signIn,
+.signUp {
+  min-height: 300px;
+  margin: 1.5em auto;
+  padding: 1em;
+  text-align: center;
+  border-radius: 7px;
+}
+.signIn__title,
+.signUp__title {
+  margin-bottom: 1em;
+  color: var(--background-blue-dark);
+}
+.signIn__input_descr,
+.signUp__input_descr {
+  display: block;
+  text-align: start;
+  color: var(--blue-light);
+}
+.signIn__input,
+.signUp__input {
+  width: 100%;
+  height: 2em;
+  margin: 1em auto;
+  padding: 1em;
+  border: solid 1px var(--blue-dark);
+  border-radius: 4px;
+}
+.signIn__btn,
+.signUp__btn {
+  display: block;
+  margin: 1em auto;
+  padding: 1em;
+  background-color: var(--blue-light);
+  color: var(--white);
+  border-radius: 4px;
+  border: none;
+}
+.signIn__btn:hover,
+.signUp__btn:hover {
+  background-color: var(--blue-dark);
+}
+.signIn__link,
+.signUp__link {
+  display: block;
+  margin: 0.5em auto;
+  text-decoration: underline;
+  color: var(--blue-dark);
+}
+.signUp__descr {
+  margin: 1em auto;
+}
+
+/**** USER ACCOUNT ****/
+/**** landing ****/
+.userAccount {
+  width: 95%;
+  margin: 1em auto;
+}
+.userAccount__title {
+  text-align: start;
+  margin: 0 auto 1em auto;
+}
+.userAccount__list {
+  text-align: center;
+}
+.userAccount__list__title {
+  margin: 1em auto;
+}
+.userAccount__link {
+  display: block;
+  margin: 1em auto;
+  padding: 1em;
+  background-color: var(--background-blue-light);
+  color: var(--white);
+}
+.userAccount__link:hover {
+  background-color: var(--background-blue-dark); 
+}
+.userAccount__link--red,
+.userAccount__link--red:hover {
+  background-color: var(--background-red);
+}
+
+/**** BOOKING USER ****/
+.userBookings--return_btn {
+  margin: 0.5em 1em;
+}
+.userBookings {
+  margin: 2em auto;
+}
+.userBookings__title {
+  text-align: center;
+}
+.userBookings__infos {
+  margin: 1.5em 0;
+  padding: 1em;
+  background-color: var(--background-grey-light);
+  line-height: var(--line-height);
+}
+.userBookings__link {
+  text-decoration: underline;
+  color: var(--blue-dark);
+}
+/**** FOOTER ****/
+
+footer {
+  width: 100%;
+  margin-top: 2em;
+  padding: 1em 0 3em 1em;
+  border-top: solid 1px var(--black);
+  background-color: var(--background-aqua);
+}
+.footer__logo_block {
+  width: 50%;
+  height: auto;
+}
+.footer__logo {
+  width: 6em;
+  height: auto;
+}
+.socialnetwork_container {
+  max-width: 200px;
+  margin-bottom: 1em;
+}
+.socialnetwork__title {
+  width: 60%;
+  text-align: center;
+  border-bottom: 1px solid var(--black);
+}
+.socialnetwork--github {
+  margin: 1em 0;
+}
+.rubrics_container {
+  max-width: 200px;
+}
+.rubrics__title {
+  width: 50%;
+  text-align: center;
+  border-bottom: 1px solid var(--black);
+}
+.rubrics--about,
+.rubrics--faq {
+  margin: 0.5em 0;
+}
+
+
+@media screen and (min-width: 768px) {
+  /*:root {*/
+
+  /*}*/
+  
+  /**** HEADER ****/
+  
+  header {
+    margin-bottom: 4.8em;
+  }
+  .header__navbar {
+    height: 75px;
+    top: 0;
+    bottom: auto;
+  }
+  .header_navbar__link--text,
+  .header__logo--desktop,
+  .navbar__list--hidden {
+    display: block;
+  }
+  .header_navbar__link--text:hover {
+    border-bottom: 2px solid var(--red);
+  }
+  .header__navbar__link--icon,
+  .header__logo_block--mobile {
+    display: none;
+  }
+  .header__navbar__text--red {
+    padding: 0.5em;
+    color: var(--white);
+    background-color: var(--red);
+    border-radius: 3px;
+  }
+  .header__navbar__text--red:hover {
+    border-bottom: none;
+  }
+  /**** LANDING PAGE ****/
+  
+  .pickDestination_container {
+    margin-top: 4.5em;
+  }
+  /**** services ****/
+  .home_services__infos {
+    margin-top: 2.5em;
+    width: 20%;
+  }
+  
+  /**** HOME DESTINATIONS ****/
+  
+  .destinationCard__btn--zoom:hover {
+    transform: scale(1.1);
+  }
+
+  /**** DETAILS ITINERARY TICKETS ****/
+
+  .purchasedBooking__infos {
+    width: 45%;
+  }
+  
+  /**** BOOKING USER ****/
+  .userBookings--return_btn {
+    margin: 6em 1em 1em 2em;
+  }
+  
+  /**** SIGN IN & SIGN UP ****/
+  .signIn,
+  .signUp {
+    width: 40%;
+    margin: 5em auto;
+  }
+  .signIn__input_descr,
+  .signUp__input_descr {
+    text-align: start;
+  }
+  .signIn__input,
+  .signUp__input {
+    width: 100%;
+  }
+  
+  /**** FOOTER ****/
+  
+  footer {
+    padding: 1em 0 1em 1em;
+  }
+}

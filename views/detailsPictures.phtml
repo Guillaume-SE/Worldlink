@@ -1,0 +1,33 @@
+<!--détail de l'image destination-->
+<nav>
+  <ul>
+    <li>
+      <a
+        href="index.php?route=pannelDestinations"
+        title="Liste des destinations"
+        >retour</a
+      >
+    </li>
+  </ul>
+</nav>
+<div>
+  <h1>
+    Détails de la photo liée à :
+    <?= htmlspecialchars( $picture['picture_name'] ); ?>
+  </h1>
+  <p>Visuel :</p>
+  <p>
+    <img
+      src="<?= htmlspecialchars( $picture['file'] ); ?>"
+      alt="<?= htmlspecialchars( $picture['caption'] ); ?>"
+    />
+  </p>
+  <p>
+    Chemin :
+    <?= htmlspecialchars( $picture['file'] ); ?>
+  </p>
+  <p>
+    Description pour l'attribut alt :
+    <?= htmlspecialchars( $picture['caption'] ); ?>
+  </p>
+</div>

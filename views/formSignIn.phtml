@@ -1,0 +1,31 @@
+<!--formulaire de connexion-->
+<section class="signIn">
+  <h1 class="signIn__title">Connectez-vous</h1>
+
+  <form action="index.php?route=submitSignIn" method="POST">
+    <label class="signIn__input_descr" for="mail">Adresse mail</label>
+    <input class="signIn__input" type="email" name="mail" required />
+
+    <?php if( isset($_SESSION['signInErrorsMail']) ) : ?>
+    <span class="error_message">
+      <?= $_SESSION['signInErrorsMail'] ?>
+    </span>
+    <?php endif; ?>
+
+    <label class="signIn__input_descr" for="password">Mot de passe</label>
+    <input class="signIn__input" type="password" name="password" required />
+
+    <?php if( isset($_SESSION['signInErrorsPassword']) ) : ?>
+    <span class="error_message">
+      <?= $_SESSION['signInErrorsPassword'] ?>
+    </span>
+    <?php endif; ?>
+
+      <button class="signIn__btn" type="submit" name="register">Se connecter</button>
+  </form>
+
+  <p>
+    Pas encore de compte ?
+    <a class="signIn__link" href="index.php?route=formSignUp" title="S'inscrire">Créer un compte</a>
+  </p>
+</section>

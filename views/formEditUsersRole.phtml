@@ -1,0 +1,30 @@
+<!--formulaire modification du rôle d'un utilisateur-->
+<div>
+    <a href="index.php?route=pannelUsers" 
+       title="Liste des utilisateur"
+       class="return_btn">retour</a>
+</div>
+
+
+<section>
+    <h1>Rôle souhaité pour <?= htmlspecialchars( $user['firstname'] ); ?> <?= htmlspecialchars( $user['lastname'] ); ?> (<?= htmlspecialchars( $user['mail'] ); ?>)</h1>
+    <form action="index.php?route=submitEditRole&userid=<?= htmlspecialchars( $user['id_user'] ); ?>" method="POST" >
+        <label for="role">Rôle :</label>
+        <select name="role" value="<?= $user['role']; ?>" />
+    
+            <option <?= htmlspecialchars( $user['role'] ) === 'user' ? 'selected' : ''; ?>         value="user">user</option>
+            <option <?= htmlspecialchars( $user['role'] ) === 'admin' ? 'selected' : ''; ?>        value="admin">admin</option>
+            <option <?= htmlspecialchars( $user['role'] ) === 'super_admin' ? 'selected' : ''; ?>  value="super_admin">super_admin</option>
+        </select>
+        
+        <?php if( isset($_SESSION['formEditRoleErrors']['roleError']) ) : ?>
+        <?php foreach( $_SESSION['formEditRoleErrors']['roleError'] as $errorMessage ) : ?>
+          <span class="error_message">
+            <?= $errorMessage ?>
+          </span>
+        <?php endforeach; ?>
+        <?php endif; ?>
+      
+      <button type="submit" name="validate">Valider</button>
+    </form>
+</section>

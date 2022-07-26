@@ -1,0 +1,61 @@
+<!--détails d'une réservation-->
+<section>
+  <h1 class="purchasedBooking__infos__title">Informations pour cette réservation</h1>
+  <article class="purchasedBooking__infos">
+    <ul>
+      <li>
+        <span class="purchasedBooking__infos--bold">N° de réservation: </span>
+        <?= htmlspecialchars( $userBookingDetails['id_booking'] ); ?>
+      </li>
+      <li>
+        <span class="purchasedBooking__infos--bold">Réservé le: </span>
+        <?= htmlspecialchars( $bookingDate ); ?>
+      </li>
+      <li>
+        <span class="purchasedBooking__infos--bold">Montant: </span>
+        <?= htmlspecialchars( $userBookingDetails['total_price'] ); ?>
+        €
+      </li>
+      <li>
+        <span class="purchasedBooking__infos--bold">Départ le: </span>
+        <?= htmlspecialchars( $travelDate ); ?>
+      </li>
+      <li>
+        <span class="purchasedBooking__infos--bold">De: </span>
+        <?= htmlspecialchars( $userBookingDetails['destination_departure'] ); ?>
+      </li>
+      <li>
+        <span class="purchasedBooking__infos--bold">Vers: </span>
+        <?= htmlspecialchars( $userBookingDetails['destination_arrival'] ); ?>
+      </li>
+      <li>
+        <span class="purchasedBooking__infos--bold">Statut: </span>
+        <?= htmlspecialchars( $userBookingDetails['status'] ); ?>
+      </li>
+    </ul>
+  </article>
+</section>
+
+<div>
+  <ul class="purchasedBooking__links">
+    <li>
+      <a href="index.php?route=bookingsUser" 
+         title="Mon espace"
+         class="return_btn"
+      >
+        Retour
+      </a>
+    </li>
+    <li>
+      <?php if ( htmlspecialchars( $userBookingDetails['status'] ) === "Confirmée"  ) :?>
+        <a
+          href="index.php?route=formCancelBooking&bookingid=<?= htmlspecialchars( $userBookingDetails['id_booking'] ); ?>"
+          title="Annuler la réservation"
+          class="purchasedBooking__links--cancel_booking"
+        >
+        Annuler ma réservation 
+        </a>
+      <?php endif; ?>
+    </li>
+  </ul>
+</div>

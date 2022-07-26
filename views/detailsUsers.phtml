@@ -1,0 +1,78 @@
+<!--affichage détails utilisateur + ses réservations-->
+<div>
+  <a href="index.php?route=pannelUsers" title="Mon espace" class="return_btn"
+    >retour</a
+  >
+</div>
+
+<h1>
+  Listes des réservations de:
+  <?= htmlspecialchars( $user['firstname'] ); ?>
+  <?= htmlspecialchars( $user['lastname'] ); ?>
+</h1>
+<div>
+  <ul>
+    <li>
+      Adresse mail:
+      <?= htmlspecialchars( $user['mail'] ); ?>
+    </li>
+    <li>
+      Date d'inscription:
+      <?= htmlspecialchars( $registrationDate ); ?>
+    </li>
+    <li>
+      Rôle:
+      <?= htmlspecialchars( $user['role'] ); ?>
+    </li>
+  </ul>
+</div>
+<section>
+  <table>
+    <thead>
+      <tr>
+        <th>N° de résa</th>
+        <th>Réservée le</th>
+        <th>Départ le</th>
+        <th>de</th>
+        <th>vers</th>
+        <th>Statut</th>
+        <th>Montant(€)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php foreach( $listBookingsUsers as $booking ) : ?>
+      <tr>
+        <td>
+          <?= htmlspecialchars( $booking['id_booking'] ); ?>
+        </td>
+        <td>
+          <?= htmlspecialchars( $bookingDate ); ?>
+        </td>
+        <td>
+          <?= htmlspecialchars( $travelDate ); ?>
+        </td>
+        <td>
+          <?= htmlspecialchars( $booking['destination_departure'] ); ?>
+        </td>
+        <td>
+          <?= htmlspecialchars( $booking['destination_arrival'] ); ?>
+        </td>
+        <td>
+          <?php if( htmlspecialchars( $booking['status'] ) === "Confirmée" ) :?>
+          <p>
+            <img src="public/img/check.svg" alt="confirmée" />
+          </p>
+          <?php else : ?>
+          <p>
+            <img src="public/img/refund.svg" alt="remboursée" />
+          </p>
+          <?php endif; ?>
+        </td>
+        <td>
+          <?= htmlspecialchars( $booking['total_price'] ); ?>
+        </td>
+      </tr>
+      <?php endforeach ?>
+    </tbody>
+  </table>
+</section>

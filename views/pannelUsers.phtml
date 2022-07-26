@@ -1,0 +1,95 @@
+<!--affichage des utilisateurs-->
+<nav>
+    <ul>
+      <li>
+        <a href="index.php?route=userAccount" title="Mon espace">retour</a>
+      </li>
+      <li>
+        <a
+          href="index.php?route=pannelDestinations"
+          title="Liste des destinations"
+          >Liste des destinations</a
+        >
+      </li>
+      <li>
+        <a href="index.php?route=pannelBookings" 
+           title="Liste des réservations">Liste des réservations</a>
+      </li>
+    </ul>
+  </nav>
+  
+  <section>
+    <div>
+      <h1>Utilisateurs :</h1>
+      <form>
+        <label for="search_users">Recherche :</label>
+        <input id="search_users" class="prevent_enter" type="text" name="search_users" />
+      </form>
+    </div>
+    <table>
+      <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nom de famille</th>
+            <th>Prénom</th>
+            <th>Adresse mail</th>
+            <th>Date d'inscription</th>
+            <th>Rôle</th>
+          </tr>
+        </thead>
+        <tbody id="target">
+          <?php foreach( $users as $user ) : ?>
+          <tr>
+            <td>
+              <p>
+                <a href="index.php?route=detailsUsers&userid=<?= htmlspecialchars( $user['id_user'] ); ?>"
+                   title="Détails"><?= htmlspecialchars( $user['id_user'] ); ?></a>
+              </p>
+            </td>
+            <td>
+              <p>
+              <?= htmlspecialchars( $user['lastname'] ); ?></a>
+              </p>
+            </td>
+            <td>
+              <?= htmlspecialchars( $user['firstname'] ); ?>
+            </td>
+            <td>
+              <?= htmlspecialchars( $user['mail'] ); ?>
+            </td>
+            <td>
+              <?= htmlspecialchars( $user['registration_date'] ); ?>
+            </td>
+            <td>
+              <?= htmlspecialchars( $user['role'] ); ?>
+            </td>
+            <td>
+              <?php if( $isSuperAdmin ): ?>
+              <p>
+                <a href="index.php?route=formEditUsersRole&userid=<?= htmlspecialchars( $user['id_user'] ); ?>" 
+                 title="Modifier le rôle">
+                 <img src="public/img/edit.svg" alt="modifier">
+                 </a>
+              </p>
+              <?php endif; ?>
+            </td>
+            <td>
+              <?php  if( $isSuperAdmin || $isAdmin && $user['role'] === 'user' ) : ?>
+              <p>
+                <a href="index.php?route=formDeleteUsers&userid=<?= htmlspecialchars( $user['id_user'] ); ?>" 
+                   title="Supprimer le compte">
+                  <img src="public/img/delete.svg" alt="supprimer">
+                </a>
+              </p>
+                <?php else : ?>
+                  <p>
+                    <img src="public/img/delete-unavailable.svg" alt="supprimer">
+                  </p>
+                <?php endif; ?>
+            </td>
+          </tr>
+          <?php endforeach ?>
+      </tbody>
+    </table>
+  </section>
+  

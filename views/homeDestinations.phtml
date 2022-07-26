@@ -1,0 +1,145 @@
+<!--affichage destinations front-->
+<section class="pickDestination_container">
+    <div class="pickDestination--overlay">
+      <div class="pickDestination__description">
+        <h1 class="pickDestination__title">Trouvez votre prochaine destination</h1>
+        <p>Choisissez directement votre trajet</p>
+      </div>
+      <!--formulaire de selection d'une destination-->
+      <div class="pickDestination__form">
+        <form action="index.php?route=submitItineraryUsers" method="POST">
+          <div>
+            <label for="departure"
+              >Ville de départ</label
+            >
+          </div>
+          <select class="pickDestination__select" name="departure" id="departure" required>
+            <option value=""></option>
+            <?php foreach ($destinations as $destination) : ?>
+            <option
+              value="<?= htmlspecialchars($destination['id_destination']); ?>"
+            >
+              <?= htmlspecialchars($destination['city']); ?>
+              (<?= htmlspecialchars($destination['country']); ?>)
+            </option>
+            <?php endforeach ?>
+          </select>
+  
+          <div>
+            <button
+              class="pickDestination__btn--swap"
+              id="swap_destinations"
+              name="swap_destinations"
+              type="button"
+              title="Inverser les lieux de départ et d'arrivée"
+            >
+              <img class="pickDestination__btn--img" id="btnSwap_img" src="public/img/arrow-reverse.svg" alt="inverser" />
+            </button>
+          </div>
+  
+          <div>
+            <label for="arrival">Ville d'arrivée</label>
+          </div>
+          <select class="pickDestination__select" name="arrival" id="arrival" required>
+            <option value=""></option>
+            <?php foreach ($destinations as $destination) : ?>
+            <option
+              value="<?= htmlspecialchars($destination['id_destination']); ?>"
+            >
+              <?= htmlspecialchars($destination['city']); ?>
+              (<?= htmlspecialchars($destination['country']); ?>)
+            </option>
+            <?php endforeach ?>
+          </select>
+  
+          <div>
+            <button
+              class="pickDestination__btn--submit"
+              type="submit"
+              title="Rechercher ce trajet"
+              data-route="detailsItineraryUsers"
+            >
+              Rechercher
+            </button>
+          </div>
+  
+          <?php if (isset($_SESSION['submitItineraryErrors'])) : ?>
+          <span class="error_message">
+            <?= $_SESSION['submitItineraryErrors'] ?>
+          </span>
+          <?php endif; ?>
+        
+        </form>
+      </div>
+      </div>
+      </section>
+  
+    <!--recherche ajax-->
+    <div class="ajax_search">
+      <form>
+        <label for="filter_destinations"
+          >Filtrez en recherchant une ville, un pays ou un continent</label
+        >
+        <input
+          type="text"
+          id="filter_destinations"
+          class="ajax_search_text prevent_enter close_keyboard"
+          name="filter_destinations"
+          autocomplete="off"
+        />
+      </form>
+    </div>
+  
+  <!--affiche les destinations-->
+  <section id="target" class="destinationCard_container">
+    <?php foreach( $destinations as $destination ) : ?>
+    <article class="destinationCard__card">
+      <div>
+        <img
+          class="destinationCard__img"
+          src="<?= htmlspecialchars( $destination['file'] ); ?>"
+          alt="<?= htmlspecialchars( $destination['caption'] ); ?>"
+        />
+      </div>
+      
+      <div class="destinationCard__infos">
+        <h2><?= htmlspecialchars( $destination['city'] ); ?></h2>
+        <p class="destinationCard__country">
+          <?= htmlspecialchars( $destination['country'] ); ?>
+        </p>
+        <p class="destinationCard__worldarea">
+          <?= htmlspecialchars( $destination['world_area'] ); ?>
+        </p>
+        <p class="destinationCard__price">
+          dès
+          <?= htmlspecialchars( $destination['price'] ); ?>
+          €
+        </p>
+        
+        <div class="destinationCard__btn_block">
+        <!--data-id-city et data-departure pour le JS-->
+          <button
+            type="button"
+            class="destinationCard__btn--departure destinationCard__btn--zoom"
+            id="button_departure"
+            data-id-city="<?= htmlspecialchars( $destination['id_destination'] ); ?>"
+            data-departure="<?= htmlspecialchars( $destination['city'] ); ?> (<?= htmlspecialchars( $destination['country'] ); ?>)"
+          >
+            Départ
+          </button>
+          
+          <button
+            type="button"
+            class="destinationCard__btn--arrival destinationCard__btn--zoom"
+            id="button_arrival"
+            data-id-city="<?= htmlspecialchars( $destination['id_destination'] ); ?>"
+            data-arrival="<?= htmlspecialchars( $destination['city'] ); ?> (<?= htmlspecialchars( $destination['country'] ); ?>)"
+          >
+            Arrivée
+          </button>
+        </div>
+      </div>
+    </article>
+    <?php endforeach ?>
+  </section>
+  

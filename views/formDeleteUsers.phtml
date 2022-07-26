@@ -1,0 +1,35 @@
+<!--formulaire suppression utilisateur-->
+<section>
+  <h1>
+    Supprimer le compte de
+    <?= htmlspecialchars( $userDetails['lastname'] ); ?>
+    <?= htmlspecialchars( $userDetails['firstname'] ); ?>
+    ?
+  </h1>
+  <div>
+    <form
+      action="index.php?route=submitDeleteUsers&userid=<?= htmlspecialchars( $userDetails['id_user'] ); ?>"
+      method="POST"
+    >
+      <div>
+        <label for="check_delete"
+          >Veuillez cocher cette case avant de valider</label
+        >
+        <input type="checkbox" name="check_delete" required />
+        <?php if( isset( $_SESSION['formDeleteUserError']['checkDeleteUserError'] ) ) : ?>
+        <span class="error_message">
+          <?= $_SESSION['formDeleteUserError']['checkDeleteUserError'] ?>
+        </span>
+        <?php endif; ?>
+      </div>
+
+      <div>
+        <button type="submit">Valider</button>
+      </div>
+    </form>
+
+    <p>
+      <a href="index.php?route=pannelUsers" title="Retour">Annuler</a>
+    </p>
+  </div>
+</section>
