@@ -2,7 +2,7 @@
 
 **Worldlink** est un site fictif de transport express de voyageurs. Un peu comme s'il y avait le même ascenceur que dans Thor dans le futur :eyes:
 Le site vous permet de réserver un voyage aux dates de votre choix en choisissant une ville de départ et une ville d'arrivée.
-Il s'agit de mon projet de fin de formation de développeur web qui m'a permis d'obtenir mon diplôme avec la mention bien.
+Il s'agit de mon projet de fin de formation pour devenir développeur web, site qui m'a permis d'obtenir mon diplôme avec la mention bien.
 Le site est réalisé en MVC avec des langages dans leur versions vanilla.
 
 Le projet étant un site fictif il n'a d'intérêt pour le grand public que de montrer mes compétences. Cependant en tant que développeur junior il a un grand intérêt pour moi car il me permet de pratiquer et revoir toutes sortes de choses grâce aux retours !
