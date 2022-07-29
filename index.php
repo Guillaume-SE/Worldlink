@@ -4,17 +4,9 @@ session_start();
 use Utils\Request;
 
 spl_autoload_register( function( $class ){
-    // Quand on instancie une class dans un namespace, on require la class dans le dossier qui porte le nom du namespace
-    // new Controller\HomeController
-    // va faire que le require_once sera comme ceci :
-    // require_once 'controllers/HomeController.php'
     require_once lcfirst( str_replace( '\\', '/', $class ) ) . '.php';
 });
 
-
-//index.php?route=home
-
-//est-ce que l'url contient un paramètre route et necessite d'être co ??
 if( array_key_exists( 'route', $_GET ) )
 {
     $route = Request::getAccessibleRoute( $_GET['route'] );
