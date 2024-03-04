@@ -16,4 +16,12 @@ Chaque destination possède un bouton départ et arrivée, en cliquant dessus vo
 
 Ensuite, en vous créant un compte, vous pourrez finaliser votre réservation.
 
+Voici quelques visuels:
+![Capture d’écran (401)](https://github.com/Guillaume-SE/Worldlink.io/assets/100344718/628c0927-ce83-42a8-91c0-72d4d871f7a0)
+![Capture d’écran (402)](https://github.com/Guillaume-SE/Worldlink.io/assets/100344718/9841486c-5b4d-48c4-bce1-a12e3e6b33e7)
+![Capture d’écran (404)](https://github.com/Guillaume-SE/Worldlink.io/assets/100344718/ba6089f1-b365-4844-af6a-c6ce10f7555a)
+![Capture d’écran (403)](https://github.com/Guillaume-SE/Worldlink.io/assets/100344718/d51db6b0-0efd-4488-87de-50ebdf6c8a45)
+![Capture d’écran (405)](https://github.com/Guillaume-SE/Worldlink.io/assets/100344718/421531ec-0d2b-40e4-947d-76ac1ad0bd03)
+
+
 Bonne visite :)
