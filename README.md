@@ -1,3 +1,8 @@
+![Static Badge](https://img.shields.io/badge/html-FD501A?style=for-the-badge&logo=html5&logoColor=white)
+![Static Badge](https://img.shields.io/badge/css-306AF1?style=for-the-badge&logo=css3&logoColor=white)
+![Static Badge](https://img.shields.io/badge/javascript-EFD81B?style=for-the-badge&logo=javascript&logoColor=black)
+![Static Badge](https://img.shields.io/badge/php-7378AE?style=for-the-badge&logo=php&logoColor=white)
+
 # Bienvenue sur mon projet Worldlink !
 
 **Worldlink** est un site fictif de transport express de voyageurs réalisé dans le cadre d'une soutenance de fin de formation.
